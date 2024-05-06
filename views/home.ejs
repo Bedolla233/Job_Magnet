@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("partials/head.ejs") %>
+
+<body>
+  <div class="container mt-4">
+    <%- include("partials/nav.ejs") %>
+
+       <!-- #f8f9fa -->
+    <section class="home-section text-center py-5" style="background-color: white ;">
+      <div class="container">
+        <h1 class="display-4 fw-bold text-dark">Welcome Back to JobMagnet!<img src='images/JobMagnet.png' alt='JobMagnet Logo' class='ms-2' style='height: 30px; vertical-align: middle;'> </h1>
+        <p class="lead fs-4">Let's continue your journey to finding the perfect job.</p>
+        <hr class="my-4">
+        <p>Explore new job listings updated daily and find your next opportunity.</p>
+        <a class="btn btn-primary btn-lg" href="/search" role="button">Browse Jobs <img src="/images/magnifier.png" alt="Search Icon" style="height: 20px;"></a>
+      </div>
+    </section>
+
+ 
+    <section class="container py-5">
+      <div class="row justify-content-center text-center g-4">
+        <div class="col-md-6">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Manage Your Profile</h5>
+              <p class="card-text">Update your resume and manage your professional profile to attract top employers.</p>
+              <a href="/profile" class="btn btn-outline-primary mt-3">Update Profile <img src="/images/updateProfile.png" alt="Save Icon" style="height: 20px;"></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title">Saved Jobs</h5>
+              <p class="card-text">Review your saved jobs and apply at your convenience.</p>
+              <a href="/savedJobs" class="btn btn-outline-primary mt-3">View Saved Jobs <img src="/images/save.png" alt="Save Icon" style="height: 20px;"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <%- include("partials/footer.ejs") %>
+  </div>
+</body>
+</html>

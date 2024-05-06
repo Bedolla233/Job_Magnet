@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<%- include("partials/head.ejs") %>
+
+<body>
+  <div class="container mt-4">
+    <%- include("partials/nav.ejs") %>
+
+    <div class="text-center py-5">
+      <h1 class="display-5 fw-bold text-dark">Welcome, <%= users.user_first_name %> <%= users.user_last_Name %>!</h1>
+      <p class="lead fs-4">Manage your profile and update your job search preferences.</p>
+      <hr class="my-4">
+    </div>
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card h-100">
+            <div class="card-body">
+              <h2>Email: <%= users.user_email %></h2>
+              <h4>Job Search Preferences:</h4>
+              <p>Zipcode: <%= pref.zip %></p>
+              <p>Job Type: <%= jobType %></p>
+              <p>Job Title: <%= pref.job_title %></p>
+              <p>Distance: <%= pref.distance %> miles</p>
+              <a href="/updateProfile" class="btn btn-outline-primary mt-3">Update Profile <img src="/images/updateProfile.png" alt="Update Icon" style="height: 20px;"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include("partials/footer.ejs") %>
+  </div>
+</body>
+</html>

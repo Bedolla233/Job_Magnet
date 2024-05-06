@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=EB Garamond:wght@400;500&display=swap');
+
+body, h1, h2, h3, p {
+  font-family: 'EB Garamond', sans-serif;
+}
+
+
+body {
+  background: linear-gradient(to right, #f0f0f0, #ffffff);
+}
+
+btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.container {
+  background-color: #ffffff; 
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1); 
+}
+
+.card {
+  background-color: #f5f0f0; 
+  border: none;
+  margin-bottom: 20px;
+}
+
+.card-footer {
+  background-color: #f1eeee; 
+}
+
+
+.card h5 {
+  color: #333333; 
+}
+
+.btn-primary {
+  background-color: #1676b1; 
+  border-color: #2d80d2;
+}
+
+.btn-danger {
+  background-color: #e2404e; 
+  border-color: #c83737;
+}
+
+.btn-outline-primary {
+  border-color: #3084df;
+  color: #3482d5;
+}
+
+.btn-outline-primary:hover {
+  background-color: #1f7fe5;
+  color: #ffffff;
+}
+
+
+
+.row {
+  margin: 0 -15px; /
+}
+
+.col {
+  padding: 0 15px; 
+}
+
+.text-center h1 {
+  color: #1968be; 
+}
+
+.lead {
+  color: #626262; 
+}
+
+
+.d-flex {
+  display: flex;
+  justify-content: start; 
+  align-items: center;
+}
+
+h1 {
+  margin-right: 10px; 
+}
+@media (max-width: 768px) {
+  .d-flex {
+    flex-direction: column;; 
+    align-items: start;
+  }
+
+  img {
+    margin-top: 10px; 
+    margin-left: 0;
+    height: 30px;
+  }
+}
+
+
+
+
+
+
+.container {
+  max-width: 600px; 
+}
+
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); 
+}
+
+.btn-primary {
+  background-color: #0056b3; 
+  border: none; 
+}
+
+.btn-primary:hover {
+  background-color: #004495; 
+}
+
+.form-control {
+  border-radius: 0.25rem;
+}
+
+.form-label {
+  font-weight: 600; 
+}
+
+.link-primary {
+  color: #0056b3;
+}
+.link-primary:hover {
+  text-decoration: underline; 
+}
+
+/* source: https://www.youtube.com/watch?v=eteq28RhIl8 */
+.popupM {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+.popupT {
+  font-size: 18px;
+}
+
+

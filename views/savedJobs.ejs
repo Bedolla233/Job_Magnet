@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <%- include("partials/head.ejs") %>
+ <link rel="stylesheet" href="/css/styles.css">
+
+ <body>
+   <div class="container mt-4">
+     <%- include("partials/nav.ejs") %>
+     <div class="text-center mb-4">
+       <h1 class="display-6 fw-bold text-dark">Your Saved Jobs <img src="/images/save.png" alt="Save Icon" style="height: 40px;"></h1>
+       <p class="lead">Review and manage jobs you've saved to apply later.</p>
+     </div>
+
+     <div class="row row-cols-1 row-cols-md-3 g-4">
+       <% if (jobs.length > 0) { %>
+         <% for(let job of jobs) { %>
+           <div class="col">
+             <div class="card h-100">
+               <div class="card-body">
+                 <h5 class="card-title"><%= job.jobTitle %></h5>
+                 <p class="card-text"><%= job.savedDate %></p>
+                 <a href="<%= job.jobLink %>" target='_blank' class="btn btn-primary">Apply Now</a>
+               </div>
+               <div class="card-footer">
+                 <form method="POST" action="/deleteFav" class="d-flex justify-content-between">
+                   <input type="hidden" name="jobLink" value="<%= job.jobLink %>">
+                   <input type="hidden" name="jobName" value="<%= job.jobTitle %>">
+                   <button type="submit" class="btn btn-danger">Delete</button>
+                 </form>
+               </div>
+             </div>
+           </div>
+         <% } %>
+       <% } else { %>
+         <div class="col">
+           <p class="text-muted text-center">No jobs saved yet. Start adding some!</p>
+         </div>
+       <% } %>
+     </div>
+
+     <%- include("partials/footer.ejs") %>
+   </div>
+  <script>
+    //adding confirmation popup to saving job
+    
+  </script>
+ </body>
+ </html

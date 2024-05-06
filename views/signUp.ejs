@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("partials/head.ejs")%>
+
+<body id="signUp" class="bg-light">
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow">
+          <div class="card-header text-center">
+            <h1 class="h3 d-inline align-middle">JobMagnet</h1>
+            <img src='images/JobMagnet.png' alt='JobMagnet Logo' class='ms-2' style='height: 30px; vertical-align: middle;'>
+          </div>
+          <div class="card-body">
+            <h3 class='text-center'>Sign Up</h3>
+            <form method = 'POST' action='/signUp' class="needs-validation" id="signUpForm" novalidate>
+              <div class="mb-1">
+                <label for="inputEmail" class="colform-label">Email</label>
+                <input type="text" id="inputEmail" name='email' class="form-control" aria-describedby="passwordHelpInline" required>
+                <div class="invalid-feedback">Please add a valid Email</div>
+              </div>
+              <div class="mb-1">
+                <label for="inputFirstName" class="col-form-label">First Name</label>
+                <input type="text" id="inputFirstName" name='firstname' class="form-control" aria-describedby="passwordHelpInline" required>
+                <div class="invalid-feedback"> Please add your First Name</div>
+              </div>
+              <div class="mb-1">
+                <label for="inputLastName" class="col-form-label">Last Name</label>
+                <input type="text" id="inputLastName" name='lastname' class="form-control" aria-describedby="passwordHelpInline" required>  
+                <div class="invalid-feedback"> Please add your Last Name</div>
+              </div>
+              <div class="mb-1">
+                <label for="inputPassword" class="col-form-label">Password</label>
+                <input type="password" id="inputPassword" name='password' class="form-control" aria-describedby="passwordHelpInline" required>
+                <div class="invalid-feedback"> Please add your password</div>
+              </div>
+              <div class="mb-1">
+                <label for="inputPasswordAgain" class="col-form-label">Re-Enter Password</label>
+                <input type="password" id="inputPasswordAgain" name='passwordCheck' class="form-control" aria-describedby="passwordHelpInline" required>
+                <div class="invalid-feedback" id="errorMsg">Please retype password</div>
+              </div>
+              <hr>
+              <button class="btn btn-secondary" id="createBtn" type="submit">Create Profile!</button> <br>
+            </form>
+            <!-- <div class="alert alert-danger mt-2" id="errorMsg"></div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center">
+      Already Been Here? <a href="/"> Login instead!</a>
+  </div>
+     
+
+  <script src="js/signUpCheck.js"></script>
+  <%- include("partials/footer.ejs") %>
+</body>
+</html>

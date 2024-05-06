@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("partials/head.ejs") %>
+
+<body>
+
+  <div id="popupM" class="popupM">
+    <span id="popupT" class="popupT"></span>
+  </div>
+  
+  <div class="container mt-4">
+    <%- include("partials/nav.ejs") %>
+      <div class="d-flex justify-content-between align-items-center">
+        <h1 class="mb-3 fw-bold">Search For Jobs <img src="/images/magnifier.png" alt="Search Icon" style="height: 40px;"></h1>
+        
+      </div>
+      
+    <div class="card p-4 mb-4">
+      <form method="POST" action="/search" class="row g-3">
+        <div class="col-md-6">
+          <label for="location" class="form-label">Job ZIP Code:</label>
+          <input type="number" class="form-control" id="location" name="location" value="<%= zip%>">
+        </div>
+        <div class="col-md-6">
+          <label for="keywords" class="form-label">Job Title:</label>
+          <input type="text" class="form-control" id="keywords" name="keywords" value="<%= keywords %>">
+        </div>
+        <div class="col-md-4">
+          <label for="jobType" class="form-label">Job Type:</label>
+          <select class="form-select" id="jobType" name="jobType">
+            <option value="0" <%if(jobType == 0){%>selected <%}%>>No Pref</option>
+            <option value="1"  <%if(jobType == 1){%>selected <%}%>>Full-Time</option>
+            <option value="2"  <%if(jobType == 2){%>selected <%}%>>Part-Time</option>
+            <option value="3" <%if(jobType == 3){%>selected <%}%>>Shift Work</option>
+            <option value="4"  <%if(jobType == 4){%>selected<%}%>>Intermittent</option>
+            <option value="5"  <%if(jobType == 5){%>selected <%}%>>Job Sharing</option>
+            <option value="6"  <%if(jobType == 6){%>selected <%}%>>Multiple Schedules</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+          <label for="distance" class="form-label">Distance (miles):</label>
+          <input type="number" class="form-control" id="distance" name="distance" value= <%= distance %>>
+        </div>
+        <div class="col-md-4">
+          <button type="submit" class="btn btn-primary mt-4">Apply</button>
+        </div>
+      </form>
+    </div>
+
+    
+    <div class="row">
+      <% for(let job of jobs) { %>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title"><%= job.MatchedObjectDescriptor.PositionTitle %></h5>
+              <p class="card-text"><%= job.MatchedObjectDescriptor.UserArea.Details.JobSummary %></p>
+              <a target="_blank" href="<%= job.MatchedObjectDescriptor.ApplyURI %>" class="btn btn-primary">Apply Now</a>
+              <div class="mt-2">
+                <input type="hidden" id='jobLink'name="jobLink" value="<%= job.MatchedObjectDescriptor.ApplyURI %>">
+                <input type="hidden" id='jobName'name="jobName" value="<%= job.MatchedObjectDescriptor.PositionTitle %>">
+                <button type="button" onclick='addToFav("<%= job.MatchedObjectDescriptor.ApplyURI %>","<%= job.MatchedObjectDescriptor.PositionTitle %>")'class="btn btn-outline-secondary">
+                  Add to Favorites <img src="/images/heart.png" alt="Heart" style="height: 16px; width: 16px; vertical-align: middle; margin-left: 5px;">
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% } %>
+    </div>
+
+    <%- include("partials/footer.ejs") %>
+  </div>
+
+  <script>
+    
+    /* source: https://www.youtube.com/watch?v=eteq28RhIl8 */
+    function addToFav(jobLink,jobName){
+      fetch('/addToFav',{
+        method: 'POST',
+        headers:{
+          'Content-Type':'application/json'
+        },
+        body: JSON.stringify({jobLink: jobLink,jobName:jobName })
+      }).then(response => {
+        if(response.ok){
+          console.log('Job added');
+           showPopupMessage('Job Saved');
+        }else{
+        console.log('FAIL')
+        }
+      }).catch(error => {
+        console.log('ERRORy')
+      })
+      
+    } 
+
+    function showPopupMessage(message) {
+      const popupM = document.getElementById('popupM');
+      const popupT = document.getElementById('popupT');
+      popupT.textContent = message;
+      popupM.style.display = 'block';
+
+      setTimeout(() => {
+          popupM.style.display = 'none';
+      }, 2000);
+    }
+  </script>
+</body>
+</html>

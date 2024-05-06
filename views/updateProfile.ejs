@@ -1,0 +1,98 @@
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <%- include("partials/head.ejs") %>
+
+ <body>
+   <div class="container mt-4">
+     <%- include("partials/nav.ejs") %>
+
+     
+     <section class="text-center py-5" style="background-color: white;">
+       <div class="container">
+         <h1 class="display-4 fw-bold text-dark">Update Your Profile</h1>
+         <p class="lead fs-4">Make changes to your profile and job preferences below.</p>
+         <hr class="my-4">
+       </div>
+     </section>
+
+     
+     <div class="container py-5">
+       
+       <div class="card h-100 mb-4">
+         <div class="card-body">
+           <form method="POST" action="/updateProfile">
+             <input type="hidden" name="user_id" value="<%= users.user_id %>">
+
+             <div class="mb-3">
+               <label for="inputFirstName" class="form-label">First Name</label>
+               <input type="text" id="inputFirstName" name='firstname' class="form-control" value="<%= users.user_first_name %>">
+             </div>
+
+             <div class="mb-3">
+               <label for="inputLastName" class="form-label">Last Name</label>
+               <input type="text" id="inputLastName" name='lastname' class="form-control" value="<%= users.user_last_Name %>">
+             </div>
+
+             <div class="mb-3">
+               <label for="inputEmail" class="form-label">Email</label>
+               <input type="text" id="inputEmail" name='email' class="form-control" value="<%= users.user_email %>">
+             </div>
+
+             <div class="mb-3">
+               <label for="inputPassword" class="form-label">Password</label>
+               <input type="password" id="inputPassword" name='password' class="form-control">
+             </div>
+
+             <div class="mb-3">
+               <label for="inputPasswordAgain" class="form-label">Re-Enter Password</label>
+               <input type="password" id="inputPasswordAgain" name='passwordCheck' class="form-control">
+             </div>
+
+             <button type="submit" class="btn btn-primary w-100">Submit Changes!</button>
+           </form>
+         </div>
+       </div>
+
+       <!-- Preferences Form -->
+       <div class="card h-100">
+         <div class="card-body">
+           <form method="post" action="/updatePrefs">
+             <input type="hidden" name="user_id" value="<%= users.user_id %>">
+             <div class="mb-3">
+               <label for="zip" class="form-label">Preferred ZipCode</label>
+               <input type="text" id="zip" name="zip" class="form-control" value="<%= pref.zip %>">
+             </div>
+             <div class="mb-3">
+               <label for="jobTitle" class="form-label">Preferred Job Title</label>
+               <input type="text" id="jobTitle" name="jobTitle" class="form-control" value="<%= pref.job_title %>">
+             </div>
+             <div class="mb-3">
+               <label for="jobType" class="form-label">Job Type:</label>
+               <select class="form-select" id="jobType" name="jobType">
+                 <option value="0" <%if(pref.job_type == 0){%>selected <%}%>>No Pref</option>
+                 <option value="1"  <%if(pref.job_type == 1){%>selected <%}%>>Full-Time</option>
+                 <option value="2"  <%if(pref.job_type == 2){%>selected <%}%>>Part-Time</option>
+                 <option value="3" <%if(pref.job_type == 3){%>selected <%}%>>Shift Work</option>
+                 <option value="4"  <%if(pref.job_type == 4){%>selected<%}%>>Intermittent</option>
+                 <option value="5"  <%if(pref.job_type == 5){%>selected <%}%>>Job Sharing</option>
+                 <option value="6"  <%if(pref.job_type == 6){%>selected <%}%>>Multiple Schedules</option>
+               </select>
+             </div>
+             <div class="mb-3">
+               <label for="distance" class="form-label">Preferred Distance</label>
+               <input type="text" id="distance" name="distance" class="form-control" value="<%= pref.distance %>">
+             </div>
+
+             <button type="submit" class="btn btn-primary w-100">Update Preferences!</button>
+           </form>
+         </div>
+       </div>
+     </div>
+
+     <%- include("partials/footer.ejs") %>
+   </div>
+
+   <script src="js/passwordCheck.js"></script>
+ </body>
+ </html>
